@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Music Recommendation Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 1s ease-in-out;
+      color: white;
+    }
+
+    .navbar {
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .nav-buttons {
+      display: flex;
+    }
+
+    .btn {
+      margin-left: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.3);
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .center-content {
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .quote {
+      font-size: 32px;
+      max-width: 80%;
+      animation: fade 1s ease-in-out;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    @keyframes fade {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">Music Recommender 🎶</div>
+    <div class="nav-buttons">
+      <a href="/login" class="btn">Login</a>
+      <a href="/register" class="btn">Register</a>
+    </div>
+  </div>
+
+  <div class="center-content">
+    <div id="quote" class="quote">"Where words fail, music speaks."</div>
+  </div>
+
+  <script>
+    const quotes = [
+      '"Where words fail, music speaks."',
+      '"Music is the shorthand of emotion."',
+      '"Without music, life would be a mistake."',
+      '"Music expresses that which cannot be said."',
+      '"One good thing about music, when it hits you, you feel no pain."'
+    ];
+
+    const backgrounds = [
+      "url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4')",
+      "url('https://media.istockphoto.com/id/1297013252/photo/music-player-on-mobile-phone-with-earphones.jpg?s=612x612&w=0&k=20&c=Y56aq0uvPe8UTYtnMzjHBNQY2WjGERO5iYta1-WwQU8=')",
+      "url('https://media.istockphoto.com/id/914202356/photo/young-woman-listening-music.jpg?s=612x612&w=0&k=20&c=kGSnm2eBGhvFXTmHZSmqXRu5A6XvC9ThfBQW6rXYVBU=')",
+      "url('https://images.unsplash.com/photo-1485579149621-3123dd979885')",
+      "url('https://images.unsplash.com/photo-1544785349-c4a5301826fd')"
+    ];
+
+    let index = 0;
+    const quoteEl = document.getElementById("quote");
+    const body = document.body;
+
+    function changeContent() {
+      index = (index + 1) % quotes.length;
+      quoteEl.innerText = quotes[index];
+      body.style.backgroundImage = backgrounds[index];
+    }
+
+    setInterval(changeContent, 3000); // every 5 seconds
+
+    // Set initial background image
+    body.style.backgroundImage = backgrounds[0];
+  </script>
+</body>
+</html>
